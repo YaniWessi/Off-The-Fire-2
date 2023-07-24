@@ -1,0 +1,27 @@
+[
+  {
+    "id": 0,
+    "label": "Home",
+    "path": "/"
+  },
+  {
+    "id": 1,
+    "label": "About Us",
+    "path": "/about"
+  },
+  {
+    "id": 2,
+    "label": "Shop",
+    "path": "/shop"
+  },
+  {
+    "id": 3,
+    "label": "Artists",
+    "path": "/artist"
+  },
+  {
+    "id": 4,
+    "label": "Gallery",
+    "path": "/gallery"
+  }
+]

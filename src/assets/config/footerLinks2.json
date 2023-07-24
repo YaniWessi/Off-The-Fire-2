@@ -1,0 +1,17 @@
+ [
+  {
+    "id": 3,
+    "label": "accessibility",
+    "path": "/accessibility"
+  },
+  {
+    "id": 4,
+    "label": "Legal Notice",
+    "path": "/legal"
+  },
+  {
+    "id": 5,
+    "label": "Terms of sale",
+    "path": "/terms"
+  }
+]
