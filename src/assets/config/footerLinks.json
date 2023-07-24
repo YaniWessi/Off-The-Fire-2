@@ -1,0 +1,17 @@
+[
+  {
+    "id": 0,
+    "label": "contact us",
+    "path": "/contact"
+  },
+  {
+    "id": 1,
+    "label": "privacy",
+    "path": "/privacy"
+  },
+  {
+    "id": 2,
+    "label": "FAQ",
+    "path": "/faq"
+  }
+]
