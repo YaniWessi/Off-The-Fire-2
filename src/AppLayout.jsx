@@ -1,22 +1,25 @@
-
+import { useState } from 'react';
 import AppHeader from './components/templates/header/AppHeader';
-import AppFooter from './components/templates/footer/AppFooter';
-import '../src/components/templates/header/appHeader.css'
-import PropTypes from 'prop-types';
-
+import AppSidebar from './components/templates/sidebar/AppSidebar';
+import './components/templates/layout.css';
 
 const AppLayout = ({ children }) => {
-  return(
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  return (
     <div className="app-layout">
-      <AppHeader />
-      { children }
-      <AppFooter />
+      <AppSidebar
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+      />
+      <div className="app-main">
+        <AppHeader onMenuClick={() => setSidebarOpen(prev => !prev)} />
+        <main className="app-content">
+          {children}
+        </main>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-
-AppLayout.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.string).isRequired
-}
 export default AppLayout;

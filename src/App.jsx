@@ -1,15 +1,12 @@
+import AppLayout from './AppLayout';
+import AppRouter from './AppRouter';
 
 function App() {
-  
-
   return (
-    
-    <>
-    
-    <h1>Hello</h1>
-
-    </>
-  )
+    <AppLayout>
+      <AppRouter />
+    </AppLayout>
+  );
 }
 
-export default App
+export default App;
