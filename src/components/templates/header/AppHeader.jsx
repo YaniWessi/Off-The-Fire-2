@@ -1,48 +1,39 @@
-import React from "react";
-import { useRef } from "react";
-import Logo from "../../molecules/logo/Logo";
-import NavLinks from "../../molecules/navlinks/NavLinks";
-import links from '../../../assets/config/headerLinks.json';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { FaBars, FaSearch, FaTimes } from 'react-icons/fa';
 import './appHeader.css';
 
+const AppHeader = ({ onMenuClick }) => {
+  const [searchValue, setSearchValue] = useState('');
 
-const AppHeader = () => {
+  return (
+    <header className="app-header">
+      {/* Hamburger — visible on mobile only */}
+      <button className="header-menu-btn" onClick={onMenuClick} aria-label="Open menu">
+        <FaBars size={20} />
+      </button>
 
-    const navRef = useRef()
+      <div className="header-search">
+        <FaSearch className="search-icon" />
+        <input
+          type="text"
+          placeholder="Search drops, artists, collections..."
+          value={searchValue}
+          onChange={e => setSearchValue(e.target.value)}
+        />
+        {searchValue && (
+          <button className="search-clear-btn" onClick={() => setSearchValue('')}>
+            <FaTimes />
+          </button>
+        )}
+      </div>
 
-    const showNavbar = () => {
-        navRef.current.classList.toggle("responsive_nav");
-    };
+      <div className="header-actions">
+        <Link to="/about" className="header-btn header-btn--ghost">Sign In</Link>
+        <Link to="/shop" className="header-btn header-btn--primary">Shop Now</Link>
+      </div>
+    </header>
+  );
+};
 
-    return (
-    <div  className="app-header">
-
-       <Logo />
-
-       <nav ref={navRef}>
-       <NavLinks links={links}/>
-
-       <button className="fa-icons nav-close-btn" onClick={showNavbar}>
-       <FaTimes size={30} />
-       </button>
-
-       </nav>
-
-
-       <button className="fa-icons" onClick={showNavbar} >
-        <FaBars size={30} />
-       </button>
-
-
-       {/* {nav && (
-           <ul className="second-links">
-            <NavLinks links={links} className="media-links"/>
-           </ul>
-       )} */}
-       
-    </div>
-
-    )
-}  
 export default AppHeader;

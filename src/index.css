@@ -7,7 +7,15 @@
 
 
 @layer base {
-  html{
+  html, body {
     font-family: 'Roboto Slab', serif;
+    background: #111;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
   }
 }

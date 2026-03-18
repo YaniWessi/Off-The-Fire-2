@@ -6,7 +6,6 @@ const AppRouter = () =>
     <Route path='/' element={ <Home/>} />
     <Route path='/about' element={ <AboutUs/>} />
     <Route path='/gallery' element={ <Gallery />} />
-    <Route path='/gallery' element={ <Gallery />} />
     <Route path='/shop' element={ <Shop />} />
   </Routes>
 
