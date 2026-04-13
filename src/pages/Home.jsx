@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { useState } from 'react';
 import kidsplaying from '../assets/images/store-images/kidsplaying.jpg';
 import greenBlackHoody from '../assets/images/store-images/green_black_hoody.png';
 import blueSweater from '../assets/images/store-images/blue_sweater.png';
@@ -11,6 +10,7 @@ import greenOrangeCrewNeck from '../assets/images/store-images/green_orange_crew
 import blackMultiLongSleeve from '../assets/images/store-images/black_multi_color_long_sleeve.png';
 import blackGrayBennie from '../assets/images/store-images/black_gray_bennie.png';
 import orangeBlueBennie from '../assets/images/store-images/orange_blue_bennie.png';
+import ProductModal from '../components/molecules/product-modal/ProductModal';
 import './home.css';
 
 const newArrivals = [
@@ -23,32 +23,25 @@ const newArrivals = [
 ];
 
 const headwear = [
-  { id: 1, name: 'Black/Gray Beanie',      price: '$28',  img: blackGrayBennie },
-  { id: 2, name: 'Orange/Blue Beanie',     price: '$28',  img: orangeBlueBennie },
-  { id: 3, name: 'Green/Orange Crew Neck', price: '$50',  img: greenOrangeCrewNeck },
-  { id: 4, name: 'Multi-Color Long Sleeve',price: '$48',  img: blackMultiLongSleeve },
+  { id: 1, name: 'Black/Gray Beanie',       price: '$28',  img: blackGrayBennie },
+  { id: 2, name: 'Orange/Blue Beanie',      price: '$28',  img: orangeBlueBennie },
+  { id: 3, name: 'Green/Orange Crew Neck',  price: '$50',  img: greenOrangeCrewNeck },
+  { id: 4, name: 'Multi-Color Long Sleeve', price: '$48',  img: blackMultiLongSleeve },
 ];
 
-const ProductCard = ({ name, price, img }) => (
-  <div className="product-card">
+const ProductCard = ({ name, price, img, onClick }) => (
+  <button className="product-card" onClick={onClick}>
     <div className="product-card-img-wrap">
       <img src={img} alt={name} className="product-card-img" />
     </div>
     <p className="product-card-name">{name}</p>
     <p className="product-card-price">{price}</p>
-  </div>
-);
-
-const SectionHeader = ({ title }) => (
-  <div className="section-header">
-    <h2 className="section-title">{title}</h2>
-    <div className="section-controls">
-      <Link to="/shop" className="section-view-all">View all</Link>
-    </div>
-  </div>
+  </button>
 );
 
 export default function Home() {
+  const [activeItem, setActiveItem] = useState(null);
+
   return (
     <div className="home">
 
@@ -69,25 +62,37 @@ export default function Home() {
             Each piece is built for the ones who move different —
             bold cuts, raw energy, limited runs.
           </p>
-          <Link to="/shop" className="spotlight-btn">Shop Now</Link>
         </div>
       </div>
 
       {/* ── New Arrivals ── */}
       <section className="product-section">
-        <SectionHeader title="New Arrivals" />
+        <div className="section-header">
+          <h2 className="section-title">New Arrivals</h2>
+        </div>
         <div className="product-row">
-          {newArrivals.map(p => <ProductCard key={p.id} {...p} />)}
+          {newArrivals.map(p => (
+            <ProductCard key={p.id} {...p} onClick={() => setActiveItem(p)} />
+          ))}
         </div>
       </section>
 
       {/* ── Headwear & Essentials ── */}
       <section className="product-section">
-        <SectionHeader title="Headwear & Essentials" />
+        <div className="section-header">
+          <h2 className="section-title">Headwear &amp; Essentials</h2>
+        </div>
         <div className="product-row">
-          {headwear.map(p => <ProductCard key={p.id} {...p} />)}
+          {headwear.map(p => (
+            <ProductCard key={p.id} {...p} onClick={() => setActiveItem(p)} />
+          ))}
         </div>
       </section>
+
+      {/* ── Product Modal ── */}
+      {activeItem && (
+        <ProductModal item={activeItem} onClose={() => setActiveItem(null)} />
+      )}
 
     </div>
   );
