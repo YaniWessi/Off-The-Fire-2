@@ -30,7 +30,6 @@ const AppHeader = ({ onMenuClick }) => {
 
       <div className="header-actions">
         <Link to="/about" className="header-btn header-btn--ghost">Sign In</Link>
-        <Link to="/shop" className="header-btn header-btn--primary">Shop Now</Link>
       </div>
     </header>
   );

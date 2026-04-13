@@ -1,13 +1,12 @@
 import { NavLink } from 'react-router-dom';
-import { FaHome, FaShoppingBag, FaUsers, FaImages, FaInfoCircle, FaTimes } from 'react-icons/fa';
+import { FaHome, FaUsers, FaImages, FaInfoCircle, FaTimes } from 'react-icons/fa';
 import './appSidebar.css';
 
 const navItems = [
   { id: 0, label: 'Home',    path: '/',        icon: FaHome },
-  { id: 1, label: 'Shop',    path: '/shop',    icon: FaShoppingBag },
-  { id: 2, label: 'About',   path: '/about',   icon: FaInfoCircle },
-  { id: 3, label: 'Artists', path: '/artist',  icon: FaUsers },
-  { id: 4, label: 'Gallery', path: '/gallery', icon: FaImages },
+  { id: 1, label: 'About',   path: '/about',   icon: FaInfoCircle },
+  { id: 2, label: 'Artists', path: '/artist',  icon: FaUsers },
+  { id: 3, label: 'Gallery', path: '/gallery', icon: FaImages },
 ];
 
 const AppSidebar = ({ isOpen, onClose }) => (
