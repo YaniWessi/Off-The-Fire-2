@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import AppHeader from './components/templates/header/AppHeader';
 import AppSidebar from './components/templates/sidebar/AppSidebar';
+import AppFooter from './components/templates/footer/AppFooter';
 import './components/templates/layout.css';
 
 const AppLayout = ({ children }) => {
@@ -16,6 +17,7 @@ const AppLayout = ({ children }) => {
         <AppHeader onMenuClick={() => setSidebarOpen(prev => !prev)} />
         <main className="app-content">
           {children}
+          <AppFooter />
         </main>
       </div>
     </div>
