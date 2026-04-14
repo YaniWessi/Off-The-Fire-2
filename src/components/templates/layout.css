@@ -20,11 +20,11 @@
 .app-content {
   flex: 1;
   overflow-y: auto;
-  padding: 2rem;
+  padding: 2rem 2rem 0;
 }
 
 @media (max-width: 768px) {
   .app-content {
-    padding: 1rem;
+    padding: 1rem 1rem 0;
   }
 }
